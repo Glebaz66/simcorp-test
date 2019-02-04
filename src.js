@@ -1,21 +1,21 @@
-money = document.querySelector('#money').value;
-month = document.querySelector('#month').value;
-rate = document.querySelector('#rate').value;
+money = document.querySelector('#money');
+month = document.querySelector('#month');
+rate = document.querySelector('#rate');
 
 
 const monthPayment = function(){
   //ставка в месяц
-  const rateAmount = (rate/12)/100;
+  const rateAmount = (rate.value/12)/100;
  
   //аннуитетный платеж
   const toPow1 = 1 + rateAmount;
-  const toPow2 = Math.pow(toPow1, month);
+  const toPow2 = Math.pow(toPow1, month.value);
   const toPow3 = toPow2 - 1;
-  const annuityPaymentRate = money * (rateAmount + (rateAmount/toPow3));
+  const annuityPaymentRate = money.value * (rateAmount + (rateAmount/toPow3));
   const result = annuityPaymentRate.toFixed(2);
   
   //разница
-  const debtBalance = money - result;
+  const debtBalance = money.value - result;
   
   document.querySelector(".debt-balance").innerHTML = 'debt balance '+ debtBalance;
   document.querySelector(".annuity-ratio").innerHTML = 'annuity ratio '+ rateAmount;
@@ -23,13 +23,7 @@ const monthPayment = function(){
 };
 
 
-// const createTable = function ({
-//   months,
-//   annuityPay,
-//   persent,
-//   body,
-//   dept,
-// }) {
+// const createTable = function () {
 //   return `
 //     <tr class="list-row">
 //       <td class="list-item">${months}</td>
